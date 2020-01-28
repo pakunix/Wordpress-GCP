@@ -1,10 +1,33 @@
----
-# PLAY PARA CONFIGURACAO A INSTANCIA GCP
 - hosts: all
-  name: Configurando instancia GCP
   remote_user: paulo_kinos
   become: yes
   tasks:
-    - name: Ajustando Timezone
-      timezone:
-        name: America/Sao_Paulo
+          - name: Ajustando o TimeZone do Servidor
+            timezone:
+                    name: America/Sao_Paulo
+          
+          - name: Instalando Apache
+            apt:
+                    name: apache2
+                    state: present
+          - name: Instalando dependencias
+            apt:
+                    pkg:
+                            - php7.2
+                            - php7.2-mysql
+                            - libapache2-mod-php7.2
+                            - php7.2-cli
+                            - php7.2-cgi
+                            - php7.2-gd
+                            - apache2-utils
+                            - mysql-client
+                    state: present
+          - name: enable service apache2
+            systemd:
+                    name: apache2
+                    enabled: yes
+                    masked: no
+          - name: start apache2
+            systemd:
+                    state: started
+                    name: apache2
