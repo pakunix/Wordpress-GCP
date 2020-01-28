@@ -1,4 +1,3 @@
 *.json
-variables.tf
 .terraform
 *.tfstate*
