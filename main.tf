@@ -34,10 +34,10 @@ resource "google_compute_instance" "helloworld" {
     command = "echo ${google_compute_instance.helloworld.network_interface.0.access_config.0.nat_ip} > ansible/inventory"
   }
 
-  # Executa a playbook na máquina provisionada
-  provisioner "local-exec" {
-    command = "ansible-playbook -i ansible/inventory --private-key id_rsa ansible/playbook.yml"
-  }
+# Executa a playbook na máquina provisionada
+# provisioner "local-exec" {
+# command = "ansible-playbook -i ansible/inventory --private-key id_rsa ansible/playbook.yml"
+# }
 
 }
 ## Cria SQL Gerenciado com Engine MySQL
