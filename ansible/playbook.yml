@@ -10,18 +10,6 @@
             apt:
                     name: apache2
                     state: present
-          - name: Instalando dependencias
-            apt:
-                    pkg:
-                            - php7.2
-                            - php7.2-mysql
-                            - libapache2-mod-php7.2
-                            - php7.2-cli
-                            - php7.2-cgi
-                            - php7.2-gd
-                            - apache2-utils
-                            - mysql-client
-                    state: present
           - name: enable service apache2
             systemd:
                     name: apache2
